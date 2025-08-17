@@ -345,17 +345,37 @@ def render_game_ui():
         return
     
     # 問題表示
-    st.markdown('<div class="question-area">', unsafe_allow_html=True)
     if question.question_type == "lower_verse":
-        st.markdown("### 📝 上の句から下の句を選んでください")
-        st.markdown(f'<div class="poem-text">{question.question_text}</div>', unsafe_allow_html=True)
-        st.markdown(f'<div class="poem-reading">({question.poem.reading_upper})</div>', unsafe_allow_html=True)
+        html = f"""
+        <div class="question-area">
+            <h3>📝 上の句から下の句を選んでください</h3>
+            <div class="poem-text">{question.question_text}</div>
+            <div class="poem-reading">({question.poem.reading_upper})</div>
+        </div>
+        """
     else:  # author
-        st.markdown("### 📝 この歌の作者を選んでください")
-        st.markdown(f'<div class="poem-text">{question.question_text}</div>', unsafe_allow_html=True)
-        st.markdown(f'<div class="poem-reading">({question.poem.reading_upper})</div>', unsafe_allow_html=True)
-        st.markdown(f'<div class="poem-reading">({question.poem.reading_lower})</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+        html = f"""
+        <div class="question-area">
+            <h3>📝 この歌の作者を選んでください</h3>
+            <div class="poem-text">{question.question_text}</div>
+            <div class="poem-reading">({question.poem.reading_upper})</div>
+            <div class="poem-reading">({question.poem.reading_lower})</div>
+        </div>
+        """
+    st.markdown(html, unsafe_allow_html=True)
+
+
+    # st.markdown('<div class="question-area">', unsafe_allow_html=True)
+    # if question.question_type == "lower_verse":
+    #     st.markdown("### 📝 上の句から下の句を選んでください")
+    #     st.markdown(f'<div class="poem-text">{question.question_text}</div>', unsafe_allow_html=True)
+    #     st.markdown(f'<div class="poem-reading">({question.poem.reading_upper})</div>', unsafe_allow_html=True)
+    # else:  # author
+    #     st.markdown("### 📝 この歌の作者を選んでください")
+    #     st.markdown(f'<div class="poem-text">{question.question_text}</div>', unsafe_allow_html=True)
+    #     st.markdown(f'<div class="poem-reading">({question.poem.reading_upper})</div>', unsafe_allow_html=True)
+    #     st.markdown(f'<div class="poem-reading">({question.poem.reading_lower})</div>', unsafe_allow_html=True)
+    # st.markdown('</div>', unsafe_allow_html=True)
     
     # 選択肢表示
     st.markdown("### 選択肢")
