@@ -546,8 +546,21 @@ def apply_custom_css():
         border-radius: 10px;
         border-left: 4px solid #fbbf24;
         margin: 1rem 0;
+        color: #1e3a8a;
     }
-    
+    @media (max-width: 600px) {
+        .description-area {
+            background-color: #fffbe6 !important;
+            color: #1e3a8a !important;
+        }
+    }
+    @media (prefers-color-scheme: dark) {
+        .description-area {
+            background-color: #222 !important;
+            color: #fff !important;
+            text-shadow: 0 1px 4px #222;
+        }
+    }    
     /* サイドバー */
     .css-1d391kg {
         background-color: #fef7ed;
