@@ -593,7 +593,7 @@ def render_sidebar():
 def main():
     # ページ設定
     st.set_page_config(
-        page_title="百人一首クイズ",
+        page_title="百人一首クイズ Kiro+Claude",
         page_icon="🌸",
         layout="wide"
     )
