@@ -404,7 +404,7 @@ def render_game_ui():
         # 解説表示
         # 解説文を整形（【出典】【背景・情景】【文学的ポイント】で改行）
         description_text = question.poem.description
-        description_text = description_text.replace("【出典】", "<br><strong>【出典】</strong>") \
+        description_text = description_text.replace("【出典】", "<strong>【出典】</strong>") \
                                            .replace("【背景・情景】", "<br><strong>【背景・情景】</strong>") \
                                            .replace("【文学的ポイント】", "<br><strong>【文学的ポイント】</strong>")
         description_html = f"""
