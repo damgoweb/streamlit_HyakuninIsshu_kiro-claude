@@ -363,19 +363,6 @@ def render_game_ui():
         </div>
         """
     st.markdown(html, unsafe_allow_html=True)
-
-
-    # st.markdown('<div class="question-area">', unsafe_allow_html=True)
-    # if question.question_type == "lower_verse":
-    #     st.markdown("### 📝 上の句から下の句を選んでください")
-    #     st.markdown(f'<div class="poem-text">{question.question_text}</div>', unsafe_allow_html=True)
-    #     st.markdown(f'<div class="poem-reading">({question.poem.reading_upper})</div>', unsafe_allow_html=True)
-    # else:  # author
-    #     st.markdown("### 📝 この歌の作者を選んでください")
-    #     st.markdown(f'<div class="poem-text">{question.question_text}</div>', unsafe_allow_html=True)
-    #     st.markdown(f'<div class="poem-reading">({question.poem.reading_upper})</div>', unsafe_allow_html=True)
-    #     st.markdown(f'<div class="poem-reading">({question.poem.reading_lower})</div>', unsafe_allow_html=True)
-    # st.markdown('</div>', unsafe_allow_html=True)
     
     # 選択肢表示
     st.markdown("### 選択肢")
@@ -415,17 +402,22 @@ def render_game_ui():
             st.error("❌ 不正解です。")
         
         # 解説表示
+        # 解説文を整形（【出典】【背景・情景】【文学的ポイント】で改行）
+        description_text = question.poem.description
+        description_text = description_text.replace("【出典】", "<br><strong>【出典】</strong>") \
+                                           .replace("【背景・情景】", "<br><strong>【背景・情景】</strong>") \
+                                           .replace("【文学的ポイント】", "<br><strong>【文学的ポイント】</strong>")
         description_html = f"""
         <div class="description-area">
             <h4>📚 解説</h4>
             <p><strong>作者:</strong> {question.poem.author}</p>
             <p><strong>全文:</strong><br>{question.poem.upper}<br>{question.poem.lower}</p>
             <p><strong>読み:</strong><br>{question.poem.reading_upper}<br>{question.poem.reading_lower}</p>
-            <p><strong>解説:</strong> {question.poem.description}</p>
+            <p><strong>解説:</strong><br>{description_text}</p>
         </div>
         """
         st.markdown(description_html, unsafe_allow_html=True)
-        
+
         # 次の問題ボタン
         if st.button("🔄 次の問題", use_container_width=True):
             generate_new_question()
