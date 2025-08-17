@@ -551,6 +551,8 @@ def render_header():
     apply_custom_css()
     st.markdown('<h1 class="main-header">🌸 百人一首クイズ 🌸</h1>', unsafe_allow_html=True)
     st.markdown("### 📚 古典文学を楽しく学ぼう")
+    st.write("Pwored by Kiro + Claude")
+
     st.markdown("---")
 
 def render_sidebar():
