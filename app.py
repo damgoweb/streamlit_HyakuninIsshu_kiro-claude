@@ -415,17 +415,16 @@ def render_game_ui():
             st.error("❌ 不正解です。")
         
         # 解説表示
-        st.markdown('<div class="description-area">', unsafe_allow_html=True)
-        st.markdown("#### 📚 解説")
-        st.markdown(f"**作者**: {question.poem.author}")
-        st.markdown(f"**全文**:")
-        st.markdown(f"{question.poem.upper}")
-        st.markdown(f"{question.poem.lower}")
-        st.markdown(f"**読み**:")
-        st.markdown(f"{question.poem.reading_upper}")
-        st.markdown(f"{question.poem.reading_lower}")
-        st.markdown(f"**解説**: {question.poem.description}")
-        st.markdown('</div>', unsafe_allow_html=True)
+        description_html = f"""
+        <div class="description-area">
+            <h4>📚 解説</h4>
+            <p><strong>作者:</strong> {question.poem.author}</p>
+            <p><strong>全文:</strong><br>{question.poem.upper}<br>{question.poem.lower}</p>
+            <p><strong>読み:</strong><br>{question.poem.reading_upper}<br>{question.poem.reading_lower}</p>
+            <p><strong>解説:</strong> {question.poem.description}</p>
+        </div>
+        """
+        st.markdown(description_html, unsafe_allow_html=True)
         
         # 次の問題ボタン
         if st.button("🔄 次の問題", use_container_width=True):
